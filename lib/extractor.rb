@@ -40,9 +40,10 @@ class Extractor
   end
 
   def extract_link(carousel_node)
-    return unless carousel_node.css('.klitem').attribute('href')
+    link = carousel_node.css('.klitem').attribute('href') || carousel_node.attribute('href')
+    return unless link
 
-    "#{BASE_URL}#{carousel_node.css('.klitem').attribute('href').value}"
+    "#{BASE_URL}#{link.value}"
   end
 
   def extract_image(carousel_node)
